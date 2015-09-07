@@ -1,0 +1,15 @@
+# Middleware
+connector = activemq
+direct_addressing = 1
+
+plugin.activemq.pool.size = 1
+plugin.activemq.pool.1.host = <%= @stomp_server %>
+plugin.activemq.pool.1.port = <%= @stomp_port %>
+plugin.activemq.pool.1.user = <%= @stomp_user %>
+plugin.activemq.pool.1.password = <%= @stomp_passwd %>
+plugin.activemq.pool.1.ssl = false
+plugin.activemq.pool.1.ssl.ca = /var/lib/puppet/ssl/certs/ca.pem
+plugin.activemq.pool.1.ssl.cert = /var/lib/puppet/ssl/certs/<%= scope.lookupvar('::fqdn') %>.pem
+plugin.activemq.pool.1.ssl.key = /var/lib/puppet/ssl/<%= scope.lookupvar('::fqdn') %>.pem
+plugin.activemq.pool.1.ssl.fallback = false
+plugin.activemq.heartbeat_interval = 45

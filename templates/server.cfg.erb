@@ -1,0 +1,23 @@
+# This file is managed by puppet! Do not change!
+<%= scope.function_template(["mcollective/snippets/common.erb"]) -%>
+daemonize   = <%= @mc_daemonize %>
+<%= scope.function_template(["mcollective/snippets/logging.erb"]) -%>
+<%= scope.function_template(["mcollective/snippets/plugins.erb"]) -%>
+<%= scope.function_template(["mcollective/snippets/middleware.erb"]) -%>
+
+# Facts
+factsource = <%= @fact_source %>
+<% if @fact_source == 'yaml' -%>
+plugin.yaml = <%= @yaml_facter_source %>
+<% end -%>
+fact_cache_time = 300
+identity = <%= scope.lookupvar('::fqdn') %>
+classesfile = /var/lib/puppet/classes.txt
+
+# Registration
+registerinterval = 600
+registration = agentlist
+
+# Authorization
+#rpcauthorization = 1
+#rpcauthprovider = action_policy
